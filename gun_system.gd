@@ -10,7 +10,6 @@ extends Weapon
 
 @export_subgroup("reload")
 @export var reload_time:float
-
 @export_subgroup("Gun variables")
 @export var fire_rate_timer:Timer
 @export var reload_timer:Timer
@@ -47,6 +46,7 @@ func _set_text() -> void:
 func _set_weapon_parent(new_parent:Node3D) -> void:
 	var tween:Tween = create_tween()
 	reparent(new_parent, true)
+	_chance_body_setting(true, false)
 	tween.set_parallel()
 	tween.tween_property(self, 'position', position_in_player_hands, 0.5).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, 'rotation_degrees', 0, 0.5).set_ease(Tween.EASE_IN_OUT)
